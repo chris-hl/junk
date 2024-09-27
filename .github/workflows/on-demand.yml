@@ -1,0 +1,24 @@
+name: junk
+
+on:
+  workflow_dispatch:
+    inputs:
+      option:
+        description: 'Message to output'
+        required: true
+        type: choice
+        options:
+        - Hello
+        - World
+        - Goodbye
+
+jobs:
+  do-output:
+    runs-on: ubuntu-latest
+    env:
+      OPTION: ${{ inputs.option }}
+    steps:
+    - name: Do Output
+      run: |
+        echo "OPTION: $OPTION"
+
