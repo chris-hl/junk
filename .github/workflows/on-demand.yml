@@ -3,22 +3,47 @@ name: junk
 on:
   workflow_dispatch:
     inputs:
-      option:
-        description: 'Message to output'
-        required: true
+      project-choice:
+        description: FPGA project
+        required: false
         type: choice
         options:
-        - Hello
-        - World
-        - Goodbye
+         - Falcon
+         - Fiero_C6
+         - Fiesta
+         - Fiesta1080
+         - Fiesta1080SDI
+         - Fiesta1080_NoahMed
+         - Fiesta5W_SDI
+         - Fiesta7Pro
+         - Fiesta7WRX
+         - FiestaSDI
+         - FiestaSDI_C4
+         - FiestaWRX
+         - FiestaWTX
+         - Fiesta_C4
+         - Fusion
+         - Fiero
+         - Fiesta5Pro
+         - Fiesta7Pro_KDK"
+      project-name:
+        description: Your project name
+        required: false
+        type: string
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
   do-output:
     runs-on: ubuntu-latest
     env:
-      OPTION: ${{ inputs.option }}
+      OPTION: ${{ inputs.project-choice }}
+      NAME: ${{ inputs.project-name }}
     steps:
     - name: Do Output
       run: |
         echo "OPTION: $OPTION"
+        echo "NAME: $NAME"
 
