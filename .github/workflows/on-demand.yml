@@ -58,8 +58,12 @@ jobs:
           exit 1
         fi
 
-    - name: Do Output
+    - name: Build Quartus
+      if: $${ inputs.quartus-project != "" }
       run: |
         echo "QUARTUS: $QUARTUS"
-        echo "VIVADO: $VIVADO"
 
+    - name: Build Vivado
+      if: $${ inputs.vivado-project != "" }
+      run: |
+        echo "VIVADO: $VIVADO"
