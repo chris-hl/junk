@@ -39,7 +39,7 @@ on:
          - CamaroMax
 
 jobs:
-  do-output:
+  FPGA Build:
     runs-on: ubuntu-latest
     steps:
     - name: Check options
