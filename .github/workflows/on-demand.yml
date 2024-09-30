@@ -1,10 +1,10 @@
-name: junk
+name: fpga-build
 
 on:
   workflow_dispatch:
     inputs:
-      project-choice:
-        description: FPGA project
+      quartus-project:
+        description: Quartus project
         required: false
         type: choice
         options:
@@ -25,25 +25,26 @@ on:
          - Fusion
          - Fiero
          - Fiesta5Pro
-         - Fiesta7Pro_KDK"
-      project-name:
-        description: Your project name
+         - Fiesta7Pro_KDK
+      vivado-project:
+        description: Vivado project
         required: false
-        type: string
-      environment:
-        description: 'Environment to run tests against'
-        type: environment
-        required: true
+        type: choice
+        options:
+         - Celica
+         - Camaro
+         - Camaro_FALD
+         - CamaroMax
 
 jobs:
   do-output:
     runs-on: ubuntu-latest
     env:
-      OPTION: ${{ inputs.project-choice }}
-      NAME: ${{ inputs.project-name }}
+      QUARTUS: ${{ inputs.quartus-project }}
+      VIVADO: ${{ inputs.vivado-project }}
     steps:
     - name: Do Output
       run: |
-        echo "OPTION: $OPTION"
-        echo "NAME: $NAME"
+        echo "QUARTUS: $QUARTUS"
+        echo "VIVADO: $VIVADO"
 
