@@ -1,4 +1,4 @@
-name: fpga-build
+name: FPGA-build
 
 on:
   workflow_dispatch:
@@ -39,7 +39,7 @@ on:
          - CamaroMax
 
 jobs:
-  FPGA Build:
+  FPGA-build:
     runs-on: ubuntu-latest
     steps:
     - name: Check options
