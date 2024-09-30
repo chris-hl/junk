@@ -47,16 +47,17 @@ jobs:
     steps:
     - name: Check options
       run: |
-        if [ -n "$QUARTUS" ] && [ -n "$VIVADO"]
+        if [ -n "$QUARTUS" ] && [ -n "$VIVADO" ]
         then
           echo "::error::Multiple projects selected"
           exit 1
         fi
-        if [ -z "$QUARTUS" ] && [ -z "$VIVADO"]
+        if [ -z "$QUARTUS" ] && [ -z "$VIVADO" ]
         then
           echo "::error::No project selected"
           exit 1
         fi
+
     - name: Do Output
       run: |
         echo "QUARTUS: $QUARTUS"
