@@ -59,11 +59,11 @@ jobs:
         fi
 
     - name: Build Quartus
-      if: $${ inputs.quartus-project != "" }
+      if: ${{ inputs.quartus-project != "" }}
       run: |
         echo "QUARTUS: $QUARTUS"
 
     - name: Build Vivado
-      if: $${ inputs.vivado-project != "" }
+      if: ${{ inputs.vivado-project != "" }}
       run: |
         echo "VIVADO: $VIVADO"
