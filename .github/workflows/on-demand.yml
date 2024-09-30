@@ -41,11 +41,11 @@ on:
 jobs:
   do-output:
     runs-on: ubuntu-latest
-    env:
-      QUARTUS: ${{ inputs.quartus-project }}
-      VIVADO: ${{ inputs.vivado-project }}
     steps:
     - name: Check options
+      env:
+        QUARTUS: ${{ inputs.quartus-project }}
+        VIVADO: ${{ inputs.vivado-project }}
       run: |
         if [ -n "$QUARTUS" ] && [ -n "$VIVADO" ]
         then
@@ -58,12 +58,16 @@ jobs:
           exit 1
         fi
 
-    - name: Build Quartus
+    - name: Quartus Build
       if: ${{ inputs.quartus-project != '' }}
+      env:
+        PROJECT: ${{ inputs.quartus-project }}
       run: |
-        echo "QUARTUS: $QUARTUS"
+        echo "QUARTUS: $PROJECT"
 
-    - name: Build Vivado
+    - name: Vivado
       if: ${{ inputs.vivado-project != '' }}
+      env:
+        PROJECT: ${{ inputs.vivado-project }}
       run: |
-        echo "VIVADO: $VIVADO"
+        echo "VIVADO: $PROJECT"
