@@ -8,6 +8,7 @@ on:
         required: false
         type: choice
         options:
+         - ""
          - Falcon
          - Fiero_C6
          - Fiesta
@@ -31,6 +32,7 @@ on:
         required: false
         type: choice
         options:
+         - ""
          - Celica
          - Camaro
          - Camaro_FALD
